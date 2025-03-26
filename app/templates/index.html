@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body class="bg-gray-400 flex flex-col items-center">
+    {% for task in tasks %}
+    <div class="p-3 bg-white h-[25vh] w-[45%] rounded-xl mt-5 flex justify-between flex-col">
+        <div class="flex justify-between">
+            <p class="text-green-600 font-bold {% if task.completed %} line-through {% endif %}">{{task.title}}</p>
+            <a href="{% url 'toggle_completed' task.id %}">
+            <i class='bx bx-check-circle {% if task.completed %} text-green-600 {% else %} text-blue-600 {% endif %}'></i></a>
+        </div>
+        <p class="text-gray-500">{{task.description}}</p>
+        <hr>
+        <div class="flex justify-between">
+                <p class="text-gray-500 font-bold">{% if task.completed %}completed {% else %} {{task.due_date}} {{task.due_time}}{% endif %}</p>
+                <a href="{% url 'delete_task' task.id %}">  
+            <i class='bx bx-trash  text-red-600'></i></a>
+        </div>
+    </div> 
+    {% endfor %}
+</body>
+</html>
