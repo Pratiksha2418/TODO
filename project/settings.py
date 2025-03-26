@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-c(pt$)_d5#xhf@vz1ekk0z@*u5zi@y91xe2&k^2+te1jgr%t@j
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS=['https://todo-5ncm.onrender.com']
 
 
 # Application definition
